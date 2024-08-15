@@ -1,16 +1,18 @@
-import * as React from 'react';
-import { Label } from '@fluentui/react';
+import * as React from "react";
+import { TextField } from "@fluentui/react";
 
 export interface IHelloWorldProps {
   name?: string;
+  updateValue?: (value: string) => void;
 }
 
 export class HelloWorld extends React.Component<IHelloWorldProps> {
   public render(): React.ReactNode {
     return (
-      <Label>
-        {this.props.name}
-      </Label>
-    )
+      <TextField
+        value={this.props.name}
+        onChange={(_event, newValue) => this.props.updateValue && this.props.updateValue(newValue || "")}
+      />
+    );
   }
 }
